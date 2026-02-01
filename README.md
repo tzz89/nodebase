@@ -20,6 +20,7 @@ Code along based on Build and Deploy an N8N & Zapier Clone | Next.js 15, React, 
    - Tailwind
    - App router
    - Turbopack
-2. install component library
+2. install component library (shadcn/materialUI)
    - shadcn@[version] init 
+   - shadcn@[version] add --all
 
