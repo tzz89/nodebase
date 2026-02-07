@@ -1,7 +1,6 @@
 ## Introduction
 Code along based on Build and Deploy an N8N & Zapier Clone | Next.js 15, React, Better Auth, Polar | Full Course 2025
-
-
+https://www.youtube.com/watch?v=ED2H_y6dmC8
 
 
 ## Techstack
@@ -34,4 +33,16 @@ Code along based on Build and Deploy an N8N & Zapier Clone | Next.js 15, React, 
    1. npx prisma migrate dev 
    2. npx prisma studio (This is UI to connect to DB)
 6. Setup global prisma client (refer to lib->db.ts, handle the case for hot reload)
+
+### Data access layer using TRPC
+We will prefetch in the server component and hand off to the client component using hydration boundary and suspensequery
+1. install tanstack (react query, https://trpc.io/docs/client/tanstack-react-query/server-components)
+   - npm install @trpc/server @trpc/client @trpc/tanstack-react-query @tanstack/react-query@latest zod client-only server-only
+2. create src/trpc/init.ts 
+3. create trpc/routers/_app.ts (this is like the endpoint)
+   1. procedures are like workflows, eg, we can create protectedProcedure and add in middleware to check if the user is login
+4. create app/api/trpc/[trpc]/route.ts (route.ts is a reserve file)
+5. Create trpc/query-client.ts 
+6. Create trpc/client.tsx, this is the client component (need to wrap the entire app, in layout.tsx with this provider)
+7. Create trpc/server.tsx this is server component
 
