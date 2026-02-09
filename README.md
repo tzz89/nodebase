@@ -56,6 +56,14 @@ Using better Auth: https://www.better-auth.com/docs/introduction
 
 
 
+### background test 
+Using inngest https://www.inngest.com/docs?ref=nav
+#### Starting inngest server
+npx inngest-cli@1.12.1 dev
+
+
 #### Progession
 george@gmail.com
 12345678
+
+Stop 3hr 06
