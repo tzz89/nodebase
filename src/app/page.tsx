@@ -1,33 +1,36 @@
-// import prisma from "@/lib/db";
-// import { caller } from "@/trpc/server";
+"use client";
 
-import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
-import { Suspense } from "react";
-import { getQueryClient, trpc } from "@/trpc/server";
-import { Client } from "./client";
+import { requireAuth } from "@/lib/auth-utils";
+import { caller } from "@/trpc/server";
+import { LogoutButton } from "./logout";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useTRPC } from "@/trpc/client";
+import { Button } from "@/components/ui/button";
+import { toast } from "sonner";
 
-// "use client";
+const Page = () => {
+  // await requireAuth();
+  // const data = await caller.getWorkflows();
 
-// import { useTRPC } from "@/trpc/client";
-// import { useQuery } from "@tanstack/react-query";
-
-const Page = async () => {
-  // const users = await prisma.user.findMany();
-  // const users = await caller.getUsers();
-  // const trpc = useTRPC();
-  // const { data: users } = useQuery(trpc.getUsers.queryOptions());
-
-  const queryClient = getQueryClient();
-  void queryClient.prefetchQuery(trpc.getUsers.queryOptions());
+  const trpc = useTRPC();
+  const { data } = useQuery(trpc.getWorkflows.queryOptions());
+  const queryClient = useQueryClient();
+  const create = useMutation(
+    trpc.createWorkflow.mutationOptions({
+      onSuccess: () => {
+        toast.success("Job queued");
+      },
+    }),
+  );
 
   return (
-    <div className="min-h-screen min-w-screen flex items-center justify-center">
-      {/* {JSON.stringify(users)} */}
-      <HydrationBoundary state={dehydrate(queryClient)}>
-        <Suspense fallback={<p>Loading</p>}>
-          <Client />
-        </Suspense>
-      </HydrationBoundary>
+    <div className="min-h-screen min-w-screen flex items-center justify-center flex-col gap-4">
+      protected Server Component
+      <div>{JSON.stringify(data, null, 2)}</div>
+      <Button disabled={create.isPending} onClick={() => create.mutate()}>
+        Create Workflow
+      </Button>
+      <LogoutButton />
     </div>
   );
 };

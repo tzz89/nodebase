@@ -11,7 +11,11 @@ https://www.youtube.com/watch?v=ED2H_y6dmC8
    - Workflow Executions: inngest
    - Observability: Sentry
    - UI component: Shadcn UI
-  
+
+## Patterns
+1. ZodResolver + react-hook-form for forms handling
+
+
 ## Key workflow
 ### Setup
 1. create nextjs project (npx create-next-app@XXXXX <projectname>)
@@ -46,3 +50,20 @@ We will prefetch in the server component and hand off to the client component us
 6. Create trpc/client.tsx, this is the client component (need to wrap the entire app, in layout.tsx with this provider)
 7. Create trpc/server.tsx this is server component
 
+### Authentication
+Using better Auth: https://www.better-auth.com/docs/introduction
+1. create (auth) folder, In nextjs (folderName) is a route group. when a folder is wrap with bracket, it does not appear in the URL
+
+
+
+### background test 
+Using inngest https://www.inngest.com/docs?ref=nav
+#### Starting inngest server
+npx inngest-cli@1.12.1 dev
+
+
+#### Progession
+george@gmail.com
+12345678
+
+Stop 3hr 06
