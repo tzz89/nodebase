@@ -63,6 +63,14 @@ npx inngest-cli@1.12.1 dev
 1. use step.ai.wrap to wrap AI SDKs as a step step.ai.wrap https://www.inngest.com/docs/features/inngest-functions/steps-workflows/step-ai-orchestration?ref=product-ai
 
 
+
+### AI provider
+Vercel AI sdk
+
+### Error Logging
+Sentry
+
+
 #### Progession
 george@gmail.com
 12345678
