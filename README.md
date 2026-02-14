@@ -64,11 +64,21 @@ npx inngest-cli@1.12.1 dev
 
 
 
+
 ### AI provider
 Vercel AI sdk
 
 ### Error Logging
 Sentry
+
+
+### Sidebar
+lucide-react: Icons
+1. config next.config to chang the root page directory
+2. use useRouter and usePathName to get the current active page
+3. add devIndicators: false, to false to remove nextjs button icon
+
+
 
 
 #### Progession
