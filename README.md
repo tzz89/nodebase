@@ -40,6 +40,16 @@ https://www.youtube.com/watch?v=ED2H_y6dmC8
 
 ### Data access layer using TRPC
 We will prefetch in the server component and hand off to the client component using hydration boundary and suspensequery
+
+#### import files
+init.ts -> this is where we create the procudures (like auth/subscription access)
+client.ts -> for client component client
+server.ts -> for server component client
+query-client.ts -> configure react QueryClient which is then used in client.tsx to create a provider wrapper
+/routers/_app.ts -> defining the endpoints/routes
+/app/trpc/[trpc]/route.ts -> this the server side endpoint
+
+
 1. install tanstack (react query, https://trpc.io/docs/client/tanstack-react-query/server-components)
    - npm install @trpc/server @trpc/client @trpc/tanstack-react-query @tanstack/react-query@latest zod client-only server-only
 2. create src/trpc/init.ts 
@@ -49,10 +59,14 @@ We will prefetch in the server component and hand off to the client component us
 5. Create trpc/query-client.ts 
 6. Create trpc/client.tsx, this is the client component (need to wrap the entire app, in layout.tsx with this provider)
 7. Create trpc/server.tsx this is server component
+8. use {trpc} from @/trpc/server for server components
+9. use useTRPC() hook when in client components
 
 ### Authentication
 Using better Auth: https://www.better-auth.com/docs/introduction
 1. create (auth) folder, In nextjs (folderName) is a route group. when a folder is wrap with bracket, it does not appear in the URL
+2. we can use auth.api.getSession(headers:await headers()) to check if the user is authenticated
+3. when using with TRPC eg "protectedProcedure" we can use const 
 
 
 
@@ -79,10 +93,21 @@ lucide-react: Icons
 3. add devIndicators: false, to false to remove nextjs button icon
 
 
+### Payments
+Polar payment provider
+1. polars can only be used for digital product
+2. We can use sandbox mode from polar for testing
+3. Can be integrated with better auth to create "customer" during sign up
+4. polars have a sandbox version for testing
+5. stripe fake cc 4242 4242 4242 4242 05/55 555
+6. polars also provide a billing portal
+
+
+
 
 
 #### Progession
 george@gmail.com
 12345678
 
-Stop 3hr 26
+Stop 5hr 21min
